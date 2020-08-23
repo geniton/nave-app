@@ -19,3 +19,16 @@ export const LinkLogo = styled(Link)`
   display: flex;
   justify-content: center;
 `
+
+export const Button = styled.button`
+  display: block;
+  color: ${props => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.grayHigh};
+  border: none;
+  width: 100%;
+  padding: 10px;
+  margin-top: 22px;
+  cursor: pointer;
+  transition: 300ms all ease;
+  font-weight: 600;
+`
