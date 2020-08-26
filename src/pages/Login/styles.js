@@ -32,3 +32,10 @@ export const Button = styled.button`
   transition: 300ms all ease;
   font-weight: 600;
 `
+
+export const MessageFeedback = styled.span`
+  color: ${props => props.theme.colors.red};
+  display: block;
+  font-size: 14px;
+  margin-top: 10px;
+`
