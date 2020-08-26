@@ -1,17 +1,35 @@
 import React from 'react';
-import { Wrapper } from './styles'
+import { BrowserRouter, Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components'
+import { AuthProvider } from 'contexts/AuthProvider'
 import GlobalStyles from './globalStyles'
 import themeStyle from './themeStyle'
+import history from 'history.js'
 
-function Main ({children}) {
+// styles
+import { Wrapper } from './styles'
+
+// components
+import Header from 'components/Header'
+
+// routes
+import Routes from 'routes'
+
+function Main () {
   return (
-    <ThemeProvider theme={themeStyle}>
-      <GlobalStyles/>
-      <Wrapper>
-        {children}
-      </Wrapper>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={themeStyle}>
+        <GlobalStyles/>
+        <BrowserRouter>
+          <Router history={history}>
+            <Header />
+            <Wrapper>
+              <Routes/>
+            </Wrapper>
+          </Router>
+        </BrowserRouter>
+      </ThemeProvider>
+    </AuthProvider>
   )
 }
 
