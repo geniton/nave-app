@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
 export const Label = styled.label`
-  position: relative;
-  top: -12px;
   display: block;
   font-size: 14px;
   font-weight: 600;
