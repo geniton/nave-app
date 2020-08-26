@@ -5,6 +5,7 @@ import t from 'prop-types'
 const OrderContext = createContext()
 
 function OrderProvider ({ children }) {
+
   async function createNaver(args) {
     const {
       name,          
@@ -28,9 +29,16 @@ function OrderProvider ({ children }) {
 
     return data
   }
+
+  async function deleteNaver(id) {
+    const { data } = await Api.delete(`/navers/${id}`)
+    console.log(data)
+    return data
+  }
+
   
   return (
-    <OrderContext.Provider value={{createNaver}}>
+    <OrderContext.Provider value={{createNaver,deleteNaver}}>
       {children}
     </OrderContext.Provider>
   )
