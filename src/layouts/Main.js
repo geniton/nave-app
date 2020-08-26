@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Router } from 'react-router-dom';
+import { BrowserRouter, Router, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components'
 import { AuthProvider } from 'contexts/AuthProvider'
+import { OrderProvider } from 'contexts/OrderProvider'
 import GlobalStyles from './globalStyles'
 import themeStyle from './themeStyle'
 import history from 'history.js'
@@ -18,17 +19,19 @@ import Routes from 'routes'
 function Main () {
   return (
     <AuthProvider>
-      <ThemeProvider theme={themeStyle}>
-        <GlobalStyles/>
-        <BrowserRouter>
-          <Router history={history}>
-            <Header />
-            <Wrapper>
-              <Routes/>
-            </Wrapper>
-          </Router>
-        </BrowserRouter>
-      </ThemeProvider>
+      <OrderProvider>
+        <ThemeProvider theme={themeStyle}>
+          <GlobalStyles/>
+          <BrowserRouter>
+            <Router history={history}>
+              <Header/>
+              <Wrapper>
+                <Routes/>
+              </Wrapper>
+            </Router>
+          </BrowserRouter>
+        </ThemeProvider>
+      </OrderProvider>
     </AuthProvider>
   )
 }
