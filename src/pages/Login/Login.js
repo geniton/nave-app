@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from 'contexts/AuthProvider'
 import { ReactComponent as Logo } from 'images/nave-logo.svg'
 
 // styles
@@ -14,6 +15,7 @@ import FormValidation from 'components/FormValidation'
 import FieldElement from 'components/FieldElement'
 
 const Login = () => {
+  const { Login } = useContext(AuthContext)
   const [form,setForm] = useState({
     email: '',
     password: '',
@@ -28,6 +30,8 @@ const Login = () => {
         ...form,
         formError
       })
+    }else {
+      Login(email,password)
     }
   }
 
@@ -69,7 +73,8 @@ const Login = () => {
               type="email"
               messageError="Email inválido"
               formError={formError}
-              value={email} />
+              value={email} 
+            />
 
             <FieldElement
               id="password" 
@@ -77,18 +82,21 @@ const Login = () => {
               name="password"
               placeholder="Senha"
               data-validation="minlength"
-              data-min-length="8"
+              data-min-length="6"
               type="password"
               messageError="Senha inválida"
               maxLength={15}
               formError={formError}
-              value={password} />
+              value={password}
+            />
 
             <Button type="submit">
               Entrar
             </Button>
 
           </FormValidation>
+
+          
         </LoginCard>
       </Container>
   )
