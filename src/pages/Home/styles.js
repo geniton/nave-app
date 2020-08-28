@@ -61,6 +61,12 @@ export const ModalWrapper = styled.div`
   ${media.lessThan("medium")`
     display: block;
   `}
+
+  figure {
+    img {
+      width: 100%;
+    }
+  }
 `
 
 export const ModalContent = styled.div`
@@ -101,12 +107,6 @@ export const ModalContent = styled.div`
       bottom: 12px;
     `}
   }
-`
-
-export const Figure = styled.figure`
-`
-
-export const Img = styled.img`
 `
 
 export const ButtonWrapper = styled.div`

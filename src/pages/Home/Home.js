@@ -67,7 +67,7 @@ function Home() {
    users ? 
     <NaverContainer>
       <Header>
-        <Title onClick={() => handleModal('User')}>Navers</Title>
+        <Title>Navers</Title>
         <LinkNaver>Adicionar Naver</LinkNaver>
       </Header>
       <Cards>
