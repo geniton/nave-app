@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Router, Route } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components'
 import { AuthProvider } from 'contexts/AuthProvider'
 import { OrderProvider } from 'contexts/OrderProvider'

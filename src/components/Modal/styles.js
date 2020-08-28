@@ -8,6 +8,7 @@ export const Container = styled.section`
   top: 0;
   width: 100%;
   z-index: 3;
+  overflow: auto;
 `
 
 export const Mask = styled.div`
@@ -36,6 +37,7 @@ export const Content = styled.div`
     width: 85%;
     padding: 60px 25px 30px;
     top: 30px;
+    transform: translateX(-50%);
   `}
 `
 

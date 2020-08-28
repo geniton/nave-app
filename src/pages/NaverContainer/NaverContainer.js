@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback, useState, useContext} from 'react';
 import { OrderContext } from 'contexts/OrderProvider'
-import history from 'history.js'
 
 // styles
 import { 
@@ -14,6 +13,9 @@ import {
 } from './styles';
 
 import { ModalContent } from 'pages/Home/styles'
+
+// utils
+import FormatDate from 'utils/FormatDate'
 
 // components
 import FormValidation from 'components/FormValidation'
@@ -34,32 +36,29 @@ function NaverContainer({
     showModalFeedbackUpdate
    } = useContext(OrderContext)
 
+   const [form,setForm] = useState({
+    name           : '',
+    job_role       : '',
+    birthdate      : '',
+    admission_date : '',
+    project        : '',
+    url            : '',
+    user_id        : null,
+    formError      : {}
+  })
+
    useEffect(() => {
      setForm({
       name           : (currentUser.name && profile) ? currentUser.name : '',
       job_role       : (currentUser.job_role && profile) ? currentUser.job_role : '',
-      birthdate      : (currentUser.birthdate && profile) ? formatDate(currentUser.birthdate) : '',
-      admission_date : (currentUser.admission_date && profile) ? formatDate(currentUser.admission_date) : '',
+      birthdate      : (currentUser.birthdate && profile) ? FormatDate(currentUser.birthdate) : '',
+      admission_date : (currentUser.admission_date && profile) ? FormatDate(currentUser.admission_date) : '',
       project        : (currentUser.project && profile) ? currentUser.project : '',
       url            : (currentUser.url && profile) ? currentUser.url : '',
       user_id        : (currentUser.user_id && profile) ? currentUser.user_id : null,
       formError      : {}
     })
    },[])
-
-  const [form,setForm] = useState({})
-
-  const formatDate = (date) => {
-    if (!date) return false
-
-    date = new Date(date)
-
-    let dia = (date.getUTCDate() < 10) ? `0${date.getUTCDate()}` : date.getUTCDate();
-    let mes = ((date.getUTCMonth()+1) < 10) ? `0${date.getUTCMonth()+1}` : date.getUTCMonth()+1;
-    let ano = date.getUTCFullYear();
-
-    return `${dia}/${mes}/${ano}`;
-  }
 
   const handleSubmit = useCallback(async (e,isValid, formError) => {
     e.preventDefault()
@@ -72,7 +71,7 @@ function NaverContainer({
     } else if (profile) {
 
       try {
-        const response = await updateNaver(form)
+        await updateNaver(form)
         handleModal('FeedbackUpdate')
       }catch(err) {
         alert('ocorreu um erro ao atualizar o naver')
@@ -81,8 +80,7 @@ function NaverContainer({
     } else {
 
       try {
-        console.log(form)
-        const response = await createNaver(form)
+        await createNaver(form)
         handleModal('FeedbackCreate')
       }catch(err) {
         alert('ocorreu um erro ao criar o naver')
@@ -110,9 +108,7 @@ function NaverContainer({
       [inputName]: inputValue,
       formError
     }))
-  },[])
-
-  console.log(form)
+  },[form])
 
   const {
     name,

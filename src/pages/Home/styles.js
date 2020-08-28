@@ -57,6 +57,10 @@ export const Cards = styled.div`
 export const ModalWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  ${media.lessThan("medium")`
+    display: block;
+  `}
 `
 
 export const ModalContent = styled.div`
@@ -91,6 +95,11 @@ export const ModalContent = styled.div`
   ul {
     position: absolute;
     bottom: 32px;
+
+    ${media.lessThan("medium")`
+      display: block;
+      bottom: 12px;
+    `}
   }
 `
 
