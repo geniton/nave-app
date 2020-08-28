@@ -2,23 +2,26 @@ import React from 'react';
 
 import { 
   Container,
-  Wrapper, 
   Mask,
-  Content
+  Content,
+  Close
 } from './styles';
 
-function Modal({show, children}) {
+function Modal({show, children, size, closeModal}) {
   
   if (!show) return false
 
   return (
     <Container>
-      <Wrapper>
-        <Mask/>
-        <Content>
-          {children}
-        </Content>
-      </Wrapper>
+      <Mask/>
+      <Content size={size}>
+        { closeModal ? 
+        <Close onClick={() => closeModal()}>
+          <i></i>
+          <i></i>
+        </Close> : null }
+        {children}
+      </Content>
     </Container>
   );
 }

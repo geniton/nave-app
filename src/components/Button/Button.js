@@ -7,14 +7,17 @@ function Button(props) {
     fullWidth = false,
     children,
     color,
-    bgColor
+    bgColor,
+    ...rest
   } = props
 
   return (
     <ButtonContainer 
       fullWidth={fullWidth} 
       color={color} 
-      bgColor={bgColor}>
+      bgColor={bgColor}
+      {...rest}
+    >
       {children}
     </ButtonContainer>
   );

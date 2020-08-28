@@ -10,17 +10,8 @@ export const Container = styled.section`
   z-index: 3;
 `
 
-export const Wrapper = styled.div`
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 3;
-`
-
-
 export const Mask = styled.div`
-  background-color: rgba(0,0,0,0.85);
+  background-color: rgba(0,0,0,0.5);
   height: 100%;
   left: 0;
   position: fixed;
@@ -31,13 +22,14 @@ export const Mask = styled.div`
 `
 
 export const Content = styled.div`
-  height: auto;
   background-color: white;
-  padding: 50px;
-  margin-bottom: 30px;
+  height: auto;
+  left: 50%;
+  max-width: ${({size}) => `${size}px` || '592px'};
   position: absolute;
-  top: 100px;
-  width: 60%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
   z-index: 3;
 
   ${media.lessThan("medium")`
@@ -45,4 +37,32 @@ export const Content = styled.div`
     padding: 60px 25px 30px;
     top: 30px;
   `}
+`
+
+export const Close = styled.button`
+  background-color: none;
+  border: none;
+  height: 14px;
+  position: absolute;
+  right: 21px;
+  top: 21px;
+  width: 14px;
+  cursor: pointer;
+
+  i {
+    background-color: ${props => props.theme.colors.grayHigh};
+    display: block;
+    height: 2px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+
+    &:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    &:nth-child(2) {
+      transform: rotate(-45deg);
+    }
+  }
 `

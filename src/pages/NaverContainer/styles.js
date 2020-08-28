@@ -9,12 +9,12 @@ export const Container = styled.section`
   justify-content: center;
 `
 
-export const ProfileWrapper = styled.div`
+export const Wrapper = styled.div`
   max-width: 600px;
   width: 100%;
 `
 
-export const ProfileHeader = styled.header`
+export const Header = styled.header`
   align-items: center;
   display: flex;
 `
