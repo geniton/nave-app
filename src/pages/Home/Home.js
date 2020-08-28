@@ -2,6 +2,9 @@ import React, { useEffect, useState,useContext, useCallback } from 'react';
 import Api from 'services/Api'
 import { OrderContext } from 'contexts/OrderProvider'
 
+// utils
+import FormatData from 'utils/FormatDate'
+
 // components
 import Card from 'components/Card'
 import Modal from 'components/Modal'
@@ -40,17 +43,15 @@ function Home() {
   },[])
 
   const handleDeleteNaver = useCallback(async(id) => {
-
-    console.log(id)
     try {
-      const response = await deleteNaver(id)
+      await deleteNaver(id)
       handleModal('Delete')
       handleModal('FeedbackDelete')
     }catch(err) {
       alert('Ocorreu um erro ao deletar o naver')
     }
 
-  },[])
+  },[deleteNaver,handleModal])
 
   const {
     name,          
@@ -83,11 +84,11 @@ function Home() {
             <span>{job_role}</span>
             <p>
               <strong>Idade</strong>
-              {birthdate}
+              {FormatData(admission_date)}
             </p>
             <p>
               <strong>Tempo de empresa</strong>
-              {admission_date}
+              {FormatData(birthdate)}
             </p>
             <p>
               <strong>Projetos em que participou</strong>
