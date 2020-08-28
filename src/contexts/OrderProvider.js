@@ -54,7 +54,7 @@ function OrderProvider ({ children }) {
     const data = await Api.delete(`/navers/${id}`,currentUser)
 
     return data
-  },[])
+  },[currentUser])
 
   const updateNaver = useCallback(async (args) => {  
     const {
@@ -77,6 +77,7 @@ function OrderProvider ({ children }) {
     } 
 
     const data = await Api.put(`/navers/${user_id}`,payload)
+    
     return data
   },[])
 
