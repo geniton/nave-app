@@ -2,6 +2,10 @@
 
 Tive problemas ao fazer update e delete. o delete, a API retorna que o naver foi deletado mais ele não é deletado e o update retorna um erro 500 InternalServerError.
 
+## Teste Navers
+
+Tive problemas ao fazer update e delete. o delete, a API retorna que o naver foi deletado mais ele não é deletado e o update retorna um erro 500 InternalServerError.
+
 ## Available Scripts
 
 In the project directory, you can run:
