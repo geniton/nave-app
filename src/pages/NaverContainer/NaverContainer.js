@@ -25,7 +25,8 @@ import Modal from 'components/Modal'
 function NaverContainer({
   profile,
   profileTitle,
-  addNaverTitle
+  addNaverTitle,
+  location
 }) {
   const { 
     updateNaver,
@@ -119,6 +120,8 @@ function NaverContainer({
     url,
     formError
   } = form
+
+  console.log(location)
 
   return (
     <Container>
